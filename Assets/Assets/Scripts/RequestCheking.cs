@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotStand : MonoBehaviour
+public class RequestCheking : MonoBehaviour
 {
     private CounterCreator creator;
     private RequestedItems requested;
@@ -43,19 +43,28 @@ public class PotStand : MonoBehaviour
     
     private void CheckRequest()
     {
+        int i = 0;
         var counters = creator.RequestedCounters;
-        foreach (KeyValuePair<GameObject, int> kvp in requested._placedCandys)
+        foreach (KeyValuePair<GameObject, int> req in requested._placedCandys)
         {
             foreach (var counter in counters)
             {
-                if(counter.Name==kvp.Key.tag)
+                if(counter.Name==req.Key.tag)
                 {
-                    Passed[0] = counter.Count.Equals(kvp.Value);
-                    Debug.Log(Passed[0].ToString() + Passed[1].ToString() + Passed[2].ToString()) ;
+                    if (i >= Passed.Length)
+                        break;
+                    Passed[i] = counter.Count.Equals(req.Value);
+                    i++;
+                    continue;
                 }
                    
             }
         }
-       
+ 
+        if (Passed[0] && Passed[1]&& Passed[2])
+        {
+
+          Debug.Log($"All passed");
+        }
     }
 }

@@ -11,17 +11,7 @@ public class CounterView : MonoBehaviour
     [SerializeField] Text[] _countersTexts;
     [SerializeField] Text[] _countersCounts;
     private List<Counter> _setCounters;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnEnable()
     {
        EventManager.OnCountersSetEvent+=SetCountersView;

@@ -86,7 +86,7 @@ public class RequestedItems : MonoBehaviour
         Vector3 posForCandy = new Vector3(_placeToSetCandy[index].transform.position.x, _placeToSetCandy[index].transform.position.y, _placeToSetCandy[index].transform.position.z);
         return posForCandy;
     }
-
+    
     public int SetRandomAmount()
     {
         AmountToCollect = Random.Range(1, _maxReqCandiesAmount);

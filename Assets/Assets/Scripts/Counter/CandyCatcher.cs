@@ -20,17 +20,28 @@ public class CandyCatcher : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        EventManager.OnItemFallEvent += ChangeCount;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnItemFallEvent -= ChangeCount;
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        ChangeCount(other);
+       // ChangeCount(other);
         pool.ReturnToPool(other.GetComponent<PooledObject>());
     }
 
-    private void ChangeCount(Collider other)
+    private void ChangeCount(string tag)
     {
         foreach (var counter in counterCreator.RequestedCounters)
         {
-            if (other.CompareTag(counter.Name))
+            if (tag.Equals(counter.Name))
             {
                 counter.IncrementCount();
             }

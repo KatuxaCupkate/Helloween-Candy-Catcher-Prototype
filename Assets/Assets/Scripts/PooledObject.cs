@@ -27,9 +27,14 @@ public class PooledObject : MonoBehaviour
   
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if ( collision.collider.CompareTag("Counter"))
         {   
-             Release(); 
+            Release();
+            EventManager.ItemFallEvent(tag);
+        }
+        else if(collision.collider.CompareTag("Ground"))
+        {
+            Release();
         }
         
     }
@@ -56,7 +61,7 @@ public class PooledObject : MonoBehaviour
     }
     public void Release()
     {   
-       ResetCondition(_targetRb);
+        ResetCondition(_targetRb);
         pool.ReturnToPool(this);
          
     }

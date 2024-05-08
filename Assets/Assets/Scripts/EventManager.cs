@@ -10,6 +10,8 @@ public static class EventManager
     public static Action<List<Counter>> OnCountersSetEvent;
     public static Action OnCountChangedEvent;
 
+    public static Action<string> OnItemFallEvent;
+
     public static void RequirementsSetEvent(Dictionary<GameObject, int> placedCandies)
     {
         OnRequirementsSetEvent?.Invoke(placedCandies);
@@ -26,5 +28,10 @@ public static class EventManager
     public static void CountChangedEvent() 
     {
       OnCountChangedEvent?.Invoke();
+    }
+
+    public static void ItemFallEvent(string ItemTag)
+    {
+        OnItemFallEvent?.Invoke(ItemTag);
     }
 }

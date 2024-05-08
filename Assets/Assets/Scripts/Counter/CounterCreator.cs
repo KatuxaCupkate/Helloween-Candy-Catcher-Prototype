@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CounterCreator : MonoBehaviour
 {
-    public List<Counter> RequestedCounters;
+    public List<Counter> RequestedCounters { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
